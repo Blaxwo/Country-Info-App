@@ -83,17 +83,23 @@ function CountryInfo() {
 
       <h2>Population Chart</h2>
       {populationData ? (
-        <Line
-          data={{
-            labels: populationData.populationCounts.map(data => data.year),
-            datasets: [{
-              label: 'Population',
-              data: populationData.populationCounts.map(data => data.value),
-              fill: false,
-              borderColor: 'blue',
-            }]
-          }}
-        />
+        <div style={{ width: '80%', height: '400px' }}>
+          <Line
+            data={{
+              labels: populationData.populationCounts.map(data => data.year),
+              datasets: [{
+                label: 'Population',
+                data: populationData.populationCounts.map(data => data.value),
+                fill: false,
+                borderColor: 'blue',
+              }]
+            }}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+            }}
+          />
+        </div>
       ) : (
         <div>Couldn't find population data.</div>
       )}
